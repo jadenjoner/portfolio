@@ -1,0 +1,446 @@
+$bg0: #25252D;
+$bg1: #2E2E37;
+$bg2: #32323D;
+$bg3: #41414d;
+
+$fg1: #FFFFE8;
+$fg2: #e4e4d1;
+$fg3: #e4e4d194;
+
+$theme: #C95B38;
+
+*{
+    box-sizing: border-box;
+    line-height: 1.5;
+}
+
+::selection {
+    background-color: $theme;
+    color: $bg0;
+}
+
+body, html{
+    padding: 0;
+    margin: 0;
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+}
+
+:root{
+    --content-width: 66rem;
+    --content-width-min: calc(100vw - 4rem);
+}
+
+body{
+    font-family: 'Cantarell', sans-serif;
+    background-color: $bg1;
+    color: $fg2;
+
+    &.darken{
+        transition: 1.5s ease-in;
+        background-color: $bg0;
+    }
+    &.lighten{
+        transition: .3s ease-in;
+        background-color: $bg2;
+    }
+}
+
+body.darken section.title .star.dark{
+    transition: .7s ease-out;
+    width: 400vw;
+    height: 400vw;
+    bottom: -100vw;
+    left: -100vw;
+}
+
+h1, h2, h3 {
+    color: $fg1;
+}
+
+.star{
+    --scale: 1;
+    position: absolute;
+    animation-name: spin;
+    animation-duration: 120s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+}
+
+.triangle{
+    --scale: 1;
+    position: absolute;
+    clip-path: polygon(50% 0%, 100% 100%, 0% 100%);
+    width: 4rem;
+    height: 3.33rem;
+    background-color: $theme;
+
+    animation-name: spin;
+    animation-duration: 30s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+}
+
+@keyframes spin{
+    from{transform: rotate(0deg) scale(var(--scale));}
+    to{transform: rotate(360deg) scale(var(--scale));}
+}
+
+a{text-decoration: none;color:$theme}
+
+button{
+    display: block;
+    text-decoration: none;
+    background-color: transparent;
+    color: $theme;
+    padding: .5rem 1rem;
+    border: 1px solid $theme;
+    text-transform: uppercase;
+    transition: 0.2s;
+    box-shadow: inset 0 0 $theme;
+    font-weight: 400;
+    font-family: "Source Code Pro";
+    font-size: 1.2rem;
+    &:hover, &:focus-visible{
+        transition: 0.2s;
+        box-shadow: inset 12rem 0px $theme;
+        color: $bg0;
+        cursor: pointer;
+    }
+
+    &.b-text{
+        border: none;
+    }
+}
+
+li{
+    list-style-type: '✸';
+    padding-inline-start: 1ch;
+}
+li::marker{
+    color: $theme;
+}
+
+section{
+    height: 100vh;
+}
+
+section.title{
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    header{
+        position: absolute;
+        top: 0;
+        right: 0;
+        padding: 1rem;
+        text-align: right;
+    }
+    .center{
+        position: relative;
+        z-index: 2;
+        h1{
+            font-size: 5.63rem;
+            margin: 0;
+            font-weight: 100;
+            line-height: 1;
+        }
+        h2{
+            margin: 0;
+            font-weight: 300;
+            font-size: 2.34rem;
+            color: $fg3;
+            margin-bottom: 1rem;
+        }
+        p{
+            margin: 0;
+            font-size: 1.13rem;
+            color: $theme;
+            font-family: "Source Code Pro";
+        }
+    }
+
+    .down-arrow{
+        position: absolute;
+        left: 50%;
+        bottom: 3rem;
+        width: 2.8rem;
+        height: 2.8rem;
+        transform: rotate(45deg);
+        display: inline-block;
+        border-right: 0.47rem solid $fg2;
+        border-bottom: 0.47rem solid $fg2;
+        transition: 0.2s;
+        opacity: 0.7;
+
+
+        animation-name: wiggle-constant;
+        animation-timing-function: ease-out;
+        animation-duration: 5s;
+        animation-iteration-count: infinite;
+        
+        
+        &:hover, &:focus-visible{
+            transition: 0.2s;
+            opacity: 1;
+            border-color: $fg1;
+            animation-name: wiggle;
+            animation-duration: 0.5s;
+            animation-iteration-count: 1;
+        }
+
+        &.hide{
+            opacity: 0 !important;
+        }
+    }
+
+    .triangle.a{
+        bottom: 18rem;
+        left: 8rem;
+        animation-direction: reverse;
+    }
+    .triangle.b{
+        top: 16rem;
+        right: 8rem;
+        --scale: 0.7;
+    }
+
+    .star.dark{
+        fill: $bg0;
+        width: 45vw;
+        height: 45vw;
+        bottom: -10vw;
+        left: -20vw;
+    }
+    .star.light{
+        fill: $bg2;
+        width: 35vw;
+        height: 35vw;
+        top: -5vw;
+        right: -10vw;
+    }
+    .triangle{
+        
+    }
+
+    @keyframes wiggle{
+        0%{transform: rotate(45deg);}
+        25%{transform: rotate(55deg);}
+        50%{transform: rotate(30deg);}
+        75%{transform: rotate(52.5deg);}
+        100%{transform: rotate(45deg);}
+    }
+    @keyframes wiggle-constant{
+        50%{transform: rotate(45deg);}
+        52.5%{transform: rotate(55deg);}
+        55%{transform: rotate(30deg);}
+        57.5%{transform: rotate(52.5deg);}
+        60%{transform: rotate(45deg);}
+    }
+}
+
+section.projects{
+    height: unset;
+    article{
+        padding-top: 7.5rem;
+        max-width: var(--content-width);
+        margin: 0 auto;
+        height: 100vh;
+        width: var(--content-width-min);
+
+        .left, .right{
+            position: relative;
+            z-index: 1;
+        }
+        .left{
+            float: left;
+            width: 50%;
+
+            h3{
+                font-size: 3rem;
+                font-weight: 500;
+                position: relative;
+                margin: 0;
+                
+                &:before{
+                    content: "";
+                    display: inline-block;
+                    background-color: $theme;
+                    position: absolute;
+                }
+                &.inshape-1::before{
+                    width: 1.5rem;
+                    height: 1.5rem;
+                    left: -2.25rem;
+                    top: 1.6rem;
+                    border-radius: 1rem;
+                }
+                &.inshape-3::before{
+                    width: 1.5rem;
+                    height: 1.5rem;
+                    left: -2.25rem;
+                    top: 1.6rem;
+                    clip-path: polygon(50% 0%, 100% 100%, 0% 100%);
+                    transform: scaleX(-1);
+                }
+                &.inshape-2::before{
+                    width: 1.5rem;
+                    height: 1.5rem;
+                    left: -2.25rem;
+                    top: 1.6rem;
+                    transform: rotate(45deg);
+                }
+            }
+            p{
+                margin-top: .45rem;
+                font-size: 1.6rem;
+                color: $fg3;
+            }
+        }
+        .right{
+            float: right;
+            width: 50%;
+            font-size: 1.5rem;
+
+            p{
+                margin-bottom: .75rem;
+            }
+            button{
+                margin-top: .75rem;
+            }
+        }
+        .display{
+            padding-top: 13.5rem;
+            position: relative;
+            iframe{
+                --scale: 0.52;
+                --width: 84%;
+                --height: 28.1rem;
+                --border-width: 4px;
+                --border-radius: 1rem;
+                --box-shadow-y: 4px;
+                --box-shadow-blur: 6px;
+                width: calc(var(--width) / var(--scale));
+                height: calc(var(--height) / var(--scale));
+                border: calc(var(--border-width) / var(--scale)) solid $fg1;
+                border-radius: calc(var(--border-radius) / var(--scale));
+                box-shadow: 0 calc(var(--box-shadow-y) / var(--scale)) calc(var(--box-shadow-blur) / var(--scale)) #0004;
+                transform: scale(var(--scale));
+                transform-origin: 0 0;
+                position: relative;
+                background: white;
+            }
+            .mobile{
+                --width: 20%;
+                --height: 25.8rem;
+                position: absolute;
+                bottom: 0;
+                right: -17%;
+            }
+        }
+    }
+}
+
+
+section.about{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    .center{
+        position: relative;
+        z-index: 1;
+        max-width: var(--content-width);
+        width: var(--content-width-min);
+    }
+    font-size: 1.5rem;
+}
+
+section.contact{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    .center{
+        max-width: var(--content-width);
+        width: var(--content-width-min);
+        font-size: 1.3rem;
+        width: 90%;
+
+        h2{
+            font-size: 4rem;
+            font-weight: 300;
+            margin: 0;
+            margin-bottom: 1rem;
+        }
+
+        input, textarea{
+            display: block;
+            resize: none;
+            background-color: $bg2;
+            border: 2px solid $bg3;
+            margin-bottom: 1rem;
+            font-family: inherit;
+            padding: .5rem 1rem;
+            font-size: inherit;
+            color: inherit;
+            max-width: 100%;
+            &:focus{
+                outline: none;
+                border-color: $theme;
+            }
+        }
+
+        .message{
+            font-size: 2rem;
+            font-weight: bold;
+        }
+    }
+}
+
+
+@media screen and (max-width: 900px){
+    .left, .right{
+        float: none !important;
+        width: 100% !important;
+    }
+    iframe.mobile{
+        display: none;
+    }
+    iframe.desktop{
+        bottom: 9rem;
+        --scale: 0.3 !important;
+        --height: 15rem !important;
+        --width: 100% !important;
+    }
+    .inshape-1::before, .inshape-2::before, .inshape-3::before{
+        display: none !important;
+    }
+    .projects article{
+        padding-top: 1rem !important;
+    }
+    *{
+        line-height: 1.2;
+    }
+    h1{
+        width: 300px;
+    }
+    .triangle{
+        display: none;
+    }
+    .title .star{
+        width: 50vh !important;
+        height: 50vh !important;
+    }
+    body.darken section.title .star.dark{
+        width: 400vh !important;
+        height: 400vh !important;
+        bottom: -200vh !important;
+        left: -100vh !important;
+    }
+}
+
+@media screen and (max-width: 500px){
+    iframe.desktop{
+        --height: 10rem !important;
+    }
+}
