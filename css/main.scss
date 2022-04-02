@@ -35,6 +35,7 @@ body{
     font-family: 'Cantarell', sans-serif;
     background-color: $bg1;
     color: $fg2;
+    overflow: hidden;
 
     &.darken{
         transition: 1.5s ease-in;
@@ -60,6 +61,9 @@ h1, h2, h3 {
 
 .star{
     --scale: 1;
+    --size: 35;
+    width: calc(var(--size) * 1vw);
+    height: calc(var(--size) * 1vw);
     position: absolute;
     animation-name: spin;
     animation-duration: 120s;
@@ -89,7 +93,7 @@ h1, h2, h3 {
 a{text-decoration: none;color:$theme}
 
 button{
-    display: block;
+    display: inline-block;
     text-decoration: none;
     background-color: transparent;
     color: $theme;
@@ -163,7 +167,7 @@ section.title{
 
     .down-arrow{
         position: absolute;
-        left: 50%;
+        left: calc(50% - 1.4rem);
         bottom: 3rem;
         width: 2.8rem;
         height: 2.8rem;
@@ -208,15 +212,13 @@ section.title{
 
     .star.dark{
         fill: $bg0;
-        width: 45vw;
-        height: 45vw;
+        --size: 45;
         bottom: -10vw;
         left: -20vw;
     }
     .star.light{
         fill: $bg2;
-        width: 35vw;
-        height: 35vw;
+        --size: 45;
         top: -5vw;
         right: -10vw;
     }
@@ -241,6 +243,7 @@ section.title{
 }
 
 section.projects{
+    position: relative;
     height: unset;
     article{
         padding-top: 7.5rem;
@@ -340,6 +343,25 @@ section.projects{
             }
         }
     }
+
+    .star.a{
+        fill: $bg2;
+        --size: 35;
+        top: 60vh;
+        right: -10vw;
+    }
+    .star.b{
+        fill: $bg2;
+        --size: 45;
+        top: 130vh;
+        left: -10vw;
+    }
+    .star.c{
+        fill: $bg2;
+        --size: 35;
+        top: 230vh;
+        right: -10vw;
+    }
 }
 
 
@@ -360,11 +382,14 @@ section.contact{
     display: flex;
     align-items: center;
     justify-content: center;
+    position: relative;
     .center{
         max-width: var(--content-width);
         width: var(--content-width-min);
         font-size: 1.3rem;
         width: 90%;
+        position: relative;
+        z-index: 2;
 
         h2{
             font-size: 4rem;
@@ -394,6 +419,13 @@ section.contact{
             font-size: 2rem;
             font-weight: bold;
         }
+    }
+
+    .star{
+        fill: $bg1;
+        --size: 80;
+        bottom: 0vh;
+        left: -30vw;
     }
 }
 
@@ -427,9 +459,9 @@ section.contact{
     .triangle{
         display: none;
     }
-    .title .star{
-        width: 50vh !important;
-        height: 50vh !important;
+    .star{
+        width: calc(var(--size) * 1vh) !important;
+        height: calc(var(--size) * 1vh) !important;
     }
     body.darken section.title .star.dark{
         width: 400vh !important;

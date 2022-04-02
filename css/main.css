@@ -25,6 +25,7 @@ body {
   font-family: "Cantarell", sans-serif;
   background-color: #2E2E37;
   color: #e4e4d1;
+  overflow: hidden;
 }
 body.darken {
   transition: 1.5s ease-in;
@@ -49,6 +50,9 @@ h1, h2, h3 {
 
 .star {
   --scale: 1;
+  --size: 35;
+  width: calc(var(--size) * 1vw);
+  height: calc(var(--size) * 1vw);
   position: absolute;
   animation-name: spin;
   animation-duration: 120s;
@@ -83,7 +87,7 @@ a {
 }
 
 button {
-  display: block;
+  display: inline-block;
   text-decoration: none;
   background-color: transparent;
   color: #C95B38;
@@ -157,7 +161,7 @@ section.title .center p {
 }
 section.title .down-arrow {
   position: absolute;
-  left: 50%;
+  left: calc(50% - 1.4rem);
   bottom: 3rem;
   width: 2.8rem;
   height: 2.8rem;
@@ -195,15 +199,13 @@ section.title .triangle.b {
 }
 section.title .star.dark {
   fill: #25252D;
-  width: 45vw;
-  height: 45vw;
+  --size: 45;
   bottom: -10vw;
   left: -20vw;
 }
 section.title .star.light {
   fill: #32323D;
-  width: 35vw;
-  height: 35vw;
+  --size: 45;
   top: -5vw;
   right: -10vw;
 }
@@ -243,6 +245,7 @@ section.title .star.light {
 }
 
 section.projects {
+  position: relative;
   height: unset;
 }
 section.projects article {
@@ -339,6 +342,24 @@ section.projects article .display .mobile {
   bottom: 0;
   right: -17%;
 }
+section.projects .star.a {
+  fill: #32323D;
+  --size: 35;
+  top: 60vh;
+  right: -10vw;
+}
+section.projects .star.b {
+  fill: #32323D;
+  --size: 45;
+  top: 130vh;
+  left: -10vw;
+}
+section.projects .star.c {
+  fill: #32323D;
+  --size: 35;
+  top: 230vh;
+  right: -10vw;
+}
 
 section.about {
   display: flex;
@@ -357,12 +378,15 @@ section.contact {
   display: flex;
   align-items: center;
   justify-content: center;
+  position: relative;
 }
 section.contact .center {
   max-width: var(--content-width);
   width: var(--content-width-min);
   font-size: 1.3rem;
   width: 90%;
+  position: relative;
+  z-index: 2;
 }
 section.contact .center h2 {
   font-size: 4rem;
@@ -389,6 +413,12 @@ section.contact .center input:focus, section.contact .center textarea:focus {
 section.contact .center .message {
   font-size: 2rem;
   font-weight: bold;
+}
+section.contact .star {
+  fill: #2E2E37;
+  --size: 80;
+  bottom: 0vh;
+  left: -30vw;
 }
 
 @media screen and (max-width: 900px) {
@@ -428,9 +458,9 @@ section.contact .center .message {
     display: none;
   }
 
-  .title .star {
-    width: 50vh !important;
-    height: 50vh !important;
+  .star {
+    width: calc(var(--size) * 1vh) !important;
+    height: calc(var(--size) * 1vh) !important;
   }
 
   body.darken section.title .star.dark {

@@ -25,6 +25,7 @@ document.onscroll = e => {
 
 
 window.addEventListener("wheel", scrollUpdate, { passive: false });
+window.addEventListener("scroll", scrollUpdate, { passive: false });
 
 function scrollUpdate(e) {
   if (!e.deltaY) return;
